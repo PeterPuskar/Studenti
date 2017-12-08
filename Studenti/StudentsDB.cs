@@ -4,6 +4,8 @@ namespace Studenti
 {
     class StudentsDB
     {
+        public Student[] ZoradenePole;
+
         private struct Student
         {
             public string meno, priezvisko;
@@ -51,18 +53,22 @@ namespace Studenti
             }
         }
 
-        private bool ZoradStudentov(Student[] array, out Student[] newArray)
+        public bool ZoradStudentov(Student[] array, out Student[] newArray)
         {
             Student temp;
             newArray = (Student[]) array.Clone();
 
             //bubble sort
+            bool triedenie = false;
+
             for (int write = 0; write < newArray.Length; write++)
             {
                 for (int sort = 0; sort < newArray.Length - 1; sort++)
                 {
                     if (newArray[sort].vek > newArray[sort + 1].vek)
+                        
                     {
+                        triedenie = true;
                         temp = newArray[sort + 1];
                         newArray[sort + 1] = newArray[sort];
                         newArray[sort] = temp;
